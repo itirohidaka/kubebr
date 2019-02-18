@@ -1,6 +1,6 @@
 # Lab 1. Prepare e faça o deploy da sua primeira aplicação
 
-Aprenda como fazer o deploy da aplicação em um cluster Kubernetes dentro do IBM Container Service
+Aprenda como fazer o deploy da aplicação em um cluster Kubernetes dentro do IBM Kubernetes Service
 
 # 0. Instale a CLI e provisione um cluster Kubernetes
 
