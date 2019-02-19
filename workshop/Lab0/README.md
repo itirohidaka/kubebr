@@ -13,7 +13,7 @@ Caso tenha as CLIs e plug-ins já instalados, você pode pular esta etapa e segu
 
 # Instalando a IBM Cloud command-line interface
 
-1. 1.	Como pré requisito para o plug-in IBM Cloud Container Service, instale a [IBM Cloud command-line interface](https://clis.ng.bluemix.net/ui/home.html). Uma vez instalada, você pode acessar a IBM Cloud a partir da sua command-line utilizando o prefixo `ibmcloud`.
+1. Como pré requisito para o plug-in IBM Cloud Container Service, instale a [IBM Cloud command-line interface](https://clis.ng.bluemix.net/ui/home.html). Uma vez instalada, você pode acessar a IBM Cloud a partir da sua command-line utilizando o prefixo `ibmcloud`.
 2. Para realizar o login na IBM Cloud CLI: `ibmcloud login`.
 3. Insira sua credencial da IBM Cloud.
 
@@ -42,7 +42,7 @@ Para ter uma versão local do Kubernetes dashboard e para implementar apps em se
 
 **Para usuários OS X e Linux:**
 
-1. 1.	Mova o arquivo executável para o diretório `/usr/local/bin` usando o comando `mv /<path_to_file>/kubectl /usr/local/bin/kubectl` .
+1. Mova o arquivo executável para o diretório `/usr/local/bin` usando o comando `mv /<path_to_file>/kubectl /usr/local/bin/kubectl` .
 
 2. Certifique-se que o caminho `/usr/local/bin` esteja listado em sua variável de sistema PATH.
 ```
