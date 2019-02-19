@@ -1,4 +1,4 @@
-# Lab 3: Escale e atualize aplicações nativament, construindo aplicações multi-tier.
+# Lab 3: Escale e atualize aplicações nativamente, construindo aplicações multi-tier.
 
 Nesse lab, você aprenderá como fazer o deploy da mesma aplicação guestbook que fizemos
 no lab anterior, de qualquer maneira, ao invés de usar as funções do `kubectl`
