@@ -1,21 +1,16 @@
-# Lab 2: Scale and Update Deployments
+# Lab 2: Escale e atualize Deployments
 
-In this lab, you'll learn how to update the number of instances
-a deployment has and how to safely roll out an update of your application
-on Kubernetes. 
+Neste lab, você irá aprender como atualizar o número de instâncias de um deployment e como disponibilizar uma atualização da sua aplicação em Kubernetes de forma segura.
 
-For this lab, you need a running deployment of the `guestbook` application
-from the previous lab. If you deleted it, recreate it using:
+Para este lab, você precisará de um deployment ativo da aplicação `guestbook`, do lab anterior. Caso você tenha apagado, recrie utilizando:
 
 ```console
 $ kubectl run guestbook --image=ibmcom/guestbook:v1
 ```
     
-# 1. Scale apps with replicas
+# 1.Escale aplicações utilizando réplicas
 
-A *replica* is a copy of a pod that contains a running service. By having
-multiple replicas of a pod, you can ensure your deployment has the available
-resources to handle increasing load on your application.
+Uma *replica* é uma cópia de um pod que contém um serviço rodando. Tendo múltiplas replicas de um pod, você garante que seu deployment terá os recursos disponíveis para aguentar uma carga crescente na sua aplicação.
 
 1. `kubectl` provides a `scale` subcommand to change the size of an
    existing deployment. Let's increase our capacity from a single running instance of
