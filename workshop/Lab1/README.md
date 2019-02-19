@@ -10,10 +10,10 @@ Se você ainda não possuir:
 
    ```$ ibmcloud cs cluster-create --name <name-of-cluster>```
 
-Uma vez o cluster provisionado, a CLI do kubernetes `kubectl` precisa ser configurado para conversar com o cluster provisionado.
+Uma vez o cluster provisionado, a CLI do kubernetes `kubectl` precisa ser configurada para conversar com o cluster provisionado.
 
 1. Execute `$ ibmcloud cs cluster-config <name-of-cluster>`, e configure a variável de ambiente `KUBECONFIG`
-   baseado na saída do comando. Isso fará seu client`kubectl` apontar para seu cluster Kubernetes.
+   baseado na saída do comando. Isso fará seu client `kubectl` apontar para seu cluster Kubernetes.
 
 Uma vez com seu client configurado, você está pronto para fazer o deploy da sua primeira aplicação, `guestbook`.
 
@@ -67,7 +67,7 @@ mas também o recurso chamado Deployment que gerencia o ciclo de vida desses pod
    ```
    
    Podemos ver que nossa `<nodeport>` é a `31208`. Nós podemos verificar também o mapeamento da porta 3000
-   dentro do pod exposto para o cluster na porta 31208. Essa porta está no range 31000 é escolhida automaticamente, 
+   dentro do pod exposto para o cluster na porta 31208. Essa porta no range 31000 é escolhida automaticamente, 
    e pode ser diferente da sua.
 
 5. Agora, a aplicação `guestbook` está rodando no seu cluster e exposta para internet. Precisamos descobrir como acessá-la.
