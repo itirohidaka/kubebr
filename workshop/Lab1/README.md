@@ -1,46 +1,43 @@
-# Lab 1. Set up and deploy your first application
+# Lab 1. Prepare e faça o deploy da sua primeira aplicação
 
-Learn how to deploy an application to a Kubernetes cluster hosted within
-the IBM Container Service.
+Aprenda como fazer o deploy de uma aplicação em um cluster Kubernetes dentro do IBM Kubernetes Service
 
-# 0. Install Prerequisite CLIs and Provision a Kubernetes Cluster
+# 0. Instale a CLI e provisione um cluster Kubernetes
 
-If you haven't already:
-1. Install the IBM Cloud CLIs and login, as described in [Lab 0](../Lab0/README.md).
-2. Provision a cluster:
+Se você ainda não possuir:
+1. Instale as CLIs da IBM Cloud e faça o login, como descrito no  [Lab 0](../Lab0/README.md).
+2. Provisione um cluster:
 
    ```$ ibmcloud cs cluster-create --name <name-of-cluster>```
 
-Once the cluster is provisioned, the kubernetes client CLI `kubectl` needs to be
-configured to talk to the provisioned cluster.
+Uma vez o cluster provisionado, a CLI do kubernetes `kubectl` precisa ser configurada para conversar com o cluster provisionado.
 
-1. Run `$ ibmcloud cs cluster-config <name-of-cluster>`, and set the `KUBECONFIG`
-   environment variable based on the output of the command. This will
-   make your `kubectl` client point to your new Kubernetes cluster.
+1. Execute `$ ibmcloud cs cluster-config <name-of-cluster>`, e configure a variável de ambiente `KUBECONFIG`
+   baseado na saída do comando. Isso fará seu client `kubectl` apontar para seu cluster Kubernetes.
 
-Once your client is configured, you are ready to deploy your first application, `guestbook`.
+Uma vez com seu client configurado, você está pronto para fazer o deploy da sua primeira aplicação, `guestbook`.
 
-# 1. Deploy your application
+# 1. Deploy da sua aplicação
 
-In this part of the lab we will deploy an application called `guestbook`
-that has already been built and uploaded to DockerHub under the name
+Nessa parte do lab nós faremos o deploy de uma aplicação chamada `guestbook`,
+que já foi construída e disponibilizada no DockerHub como 
 `ibmcom/guestbook:v1`.
 
-1. Start by running `guestbook`:
+1. Execute o `guestbook` rodando o seguinte comando:
 
    ```$ kubectl run guestbook --image=ibmcom/guestbook:v1```
 
-   This action will take a bit of time. To check the status of the running application,
-   you can use `$ kubectl get pods`.
+   Esse comando pode levar um tempo. Para checar o status da aplicação em execução, 
+você pode rodar  `$ kubectl get pods`.
 
-   You should see output similar to the following:
+   Você irá se deparar com uma saída parecida com essa:
 
    ```console
    $ kubectl get pods
    NAME                          READY     STATUS              RESTARTS   AGE
    guestbook-59bd679fdc-bxdg7    0/1       ContainerCreating   0          1m
    ```
-   Eventually, the status should show up as `Running`.
+   Após um tempo o status deverá estar como `Running`.
    
    ```console
    $ kubectl get pods
@@ -48,20 +45,20 @@ that has already been built and uploaded to DockerHub under the name
    guestbook-59bd679fdc-bxdg7    1/1       Running             0          1m
    ```
    
-   The end result of the run command is not just the pod containing our application containers,
-   but a Deployment resource that manages the lifecycle of those pods.
+   O resultado final não é somente um pod contendo nossos containers da aplicação, 
+mas também o recurso chamado Deployment que gerencia o ciclo de vida desses pods.
  
    
-3. Once the status reads `Running`, we need to expose that deployment as a
-   service so we can access it through the IP of the worker nodes.
-   The `guestbook` application listens on port 3000.  Run:
+3. Assim que os status estiverem como `Running`, nós precisamos expor esse Deployment
+   como um serviço para que consigamos acessá-lo através do IP do worker node.
+   A aplicação `guestbook` atende na porta 3000.  Execute:
 
    ```console
    $ kubectl expose deployment guestbook --type="NodePort" --port=3000
    service "guestbook" exposed
    ```
 
-4. To find the port used on that worker node, examine your new service:
+4. Para encontrar a porta usada nesse worker node, examine seu novo serviço: 
 
    ```console
    $ kubectl get service guestbook
@@ -69,13 +66,13 @@ that has already been built and uploaded to DockerHub under the name
    guestbook   NodePort   10.10.10.253   <none>        3000:31208/TCP   1m
    ```
    
-   We can see that our `<nodeport>` is `31208`. We can see in the output the port mapping from 3000 inside 
-   the pod exposed to the cluster on port 31208. This port in the 31000 range is automatically chosen, 
-   and could be different for you.
+   Podemos ver que nossa `<nodeport>` é a `31208`. Nós podemos verificar também o mapeamento da porta 3000
+   dentro do pod exposto para o cluster na porta 31208. Essa porta no range 31000 é escolhida automaticamente, 
+   e pode ser diferente da sua.
 
-5. `guestbook` is now running on your cluster, and exposed to the internet. We need to find out where it is accessible.
-   The worker nodes running in the container service get external IP addresses.
-   Run `$ ibmcloud cs workers <name-of-cluster>`, and note the public IP listed on the `<public-IP>` line.
+5. Agora, a aplicação `guestbook` está rodando no seu cluster e exposta para internet. Precisamos descobrir como acessá-la.
+   O worker node que está rodando no kubernetes service pega um endereço IP externo.
+   Execute o comando `$ ibmcloud cs workers <name-of-cluster>`, e note que o IP público é listado na linha `<public-IP>`.
    
    ```console
    $ ibmcloud cs workers osscluster
@@ -84,20 +81,18 @@ that has already been built and uploaded to DockerHub under the name
    kube-hou02-pa1e3ee39f549640aebea69a444f51fe55-w1   173.193.99.136   10.76.194.30   free           normal   Ready    hou02   1.5.6_1500*
    ```
    
-   We can see that our `<public-IP>` is `173.193.99.136`.
+   Podemos ver que nosso `<public-IP>` é `173.193.99.136`.
    
-6. Now that you have both the address and the port, you can now access the application in the web browser
-   at `<public-IP>:<nodeport>`. In the example case this is `173.193.99.136:31208`.
+6. Agora que você possui o IP e a porta, você pode acessar a aplicação no seu browser com seguinte endereço
+  `<public-IP>:<nodeport>`. Nesse exemplo seria `173.193.99.136:31208`.
    
-Congratulations, you've now deployed an application to Kubernetes!
+Parabéns, você fez o deploy de uma aplicação no Kubernetes!
 
-When you're all done, you can either use this deployment in the
-[next lab of this course](../Lab2/README.md), or you can remove the deployment
-and thus stop taking the course.
+Quando você tiver terminado, você pode também usar esse deployment
+[próximo lab deste curso](../Lab2/README.md), ou você pode remover o deployment e encerrar o curso por aqui
 
-  1. To remove the deployment, use `$ kubectl delete deployment guestbook`.
+  1. Para remover o deployment, execute `$ kubectl delete deployment guestbook`.
 
-  2. To remove the service, use `$ kubectl delete service guestbook`.
+  2. Para remover o serviço, execute  `$ kubectl delete service guestbook`.
 
-You should now go back up to the root of the repository in preparation
-for the next lab: `$ cd ..`.
+Agora você voltar na raiz do repositório para se preparar para o próximo Lab: `$ cd ..`.
