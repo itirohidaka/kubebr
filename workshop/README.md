@@ -20,15 +20,15 @@ Esse lab é uma introdução ao uso de containers no IBM Cloud Kubernetes Servic
 * Proteger e monitorar seu cluster e sua aplicação
 
 # Pré-requisitos 
-* A Pay-As-You-Go or Subscription [IBM Cloud account](https://console.bluemix.net/registration/)
+* Uma conta Pay-As-You-Go ou de assinatura [IBM Cloud account](https://console.bluemix.net/registration/)
 
-# Virtual machines
+# Máquinas Virtuais
 
-Prior to containers, most infrastructure ran not on bare metal, but atop hypervisors managing multiple virtualized operating systems (OSes). This arrangement allowed isolation of applications from one another on a higher level than that provided by the OS. These virtualized operating systems see what looks like their own exclusive hardware. However, this also means that each of these virtual operating systems are replicating an entire OS, taking up disk space.
+Antes dos containers, a maior parte da infraestrutura não rodava em bare metal, mas sobre hypervisors gerenciando vários sistemas operacionais virtualizados (OSes). Esse arranjo permite o isolamento de aplicações uma das outras em um nivel maior do que o provido pelo sistema operacional. Esses sistemas operacionais virtualizados veem o que parece pra eles o próprio hardware exclusivo. Contudo, isso também significa que cada sistema operacional virtualizado replicam um SO inteiro, ocupando espaço no disco.
 
 # Containers
 
-Containers provide isolation similar to VMs, except provided by the OS and at the process level. Each container is a process or group of processes run in isolation. Typical containers explicitly run only a single process, as they have no need for the standard system services. What they usually need to do can be provided by system calls to the base OS kernel.
+Containers fornecem um isolamento parecido com as VMs, exceto pelo SO e o nível do processo. Cada container é um processo ou grupo de processos que rodam isolados. Containers típicos rodam apenas um unico Typical containers explicitly run only a single process, as they have no need for the standard system services. What they usually need to do can be provided by system calls to the base OS kernel.
 
 The isolation on linux is provided by a feature called 'namespaces'. Each different kind of isolation (IE user, cgroups) is provided by a different namespace.
 
