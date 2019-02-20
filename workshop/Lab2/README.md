@@ -66,7 +66,7 @@ ao seu deployment, como mostrado no seguinte diagrama:
 
 ![HA with more clusters and regions](../images/cluster_ha_roadmap.png)
 
-# 2. Roll back e atualização de apps
+# 2. Atualização e Roll Back de aplicações
 
 O Kubernetes te permite atualizar uma aplicação sem a necessidade de que ela seja interrompida; isso facilita a mudança de um aplicativo já em execução e também permite desfazer uma atualização já feita, caso seja descoberto algum problema durante ou após a implementação.
 
