@@ -1,10 +1,10 @@
-# IBM Cloud Container Service Lab
+# IBM Cloud Kubernetes Service Lab
 
 <img src="https://kubernetes.io/images/favicon.png" width="200">
 
-# An introduction to containers
+# Uma introdução à containers
 
-Hey, are you looking for a containers 101 course? Check out our [Docker Essentials](https://developer.ibm.com/courses/all/docker-essentials-extend-your-apps-with-containers/).
+Ei, você está procurando um curso 101 sobre containers? Confira nosso [Docker Essentials](https://developer.ibm.com/courses/all/docker-essentials-extend-your-apps-with-containers/).
 
 Containers allow you to run securely isolated applications with quotas on system resources. Containers started out as an individual feature delivered with the linux kernel. Docker launched with making containers easy to use and developers quickly latched onto that idea. Containers have also sparked an interest in microservice architecture, a design pattern for developing applications in which complex applications are down into smaller, composable pieces which work together.
 
