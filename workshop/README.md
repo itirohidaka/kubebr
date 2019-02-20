@@ -8,18 +8,18 @@ Ei, você está procurando um curso 101 sobre containers? Confira nosso [Docker 
 
 Containers permitem que você rode aplicações isoladas com segurança with quotas on system resources. Containers começaram como uma ferramenta individual entregue com kernel linux. Docker foi lançado tornando containers fácil de se usar e os desenvolvedores rapidamente aderiram essa ideia. Containers também despertaram interesses em arquiteturas de microsserviços, uma metodologia para desenvolvimento de aplicações aonde aplicações complexas são divididas em partes essas partes trabalham juntas.
 
-Assista esse [video](https://www.youtube.com/watch?v=wlBhtc31I8c) para saber mais sobre usos de produção de containersT.
+Assista esse [video](https://www.youtube.com/watch?v=wlBhtc31I8c) para saber mais sobre usos de containers em produção.
 
-# Objectives
+# Objetivos
 
-This lab is an introduction to using Docker containers on Kubernetes in the IBM Cloud Container Service. By the end of the course, you'll achieve these objectives:
-* Understand core concepts of Kubernetes
-* Build a Docker image and deploy an application on Kubernetes in the IBM Cloud Container Service 
-* Control application deployments, while minimizing your time with infrastructure management
-* Add AI services to extend your app 
-* Secure and monitor your cluster and app
+Esse lab é uma introdução ao uso de containers no IBM Cloud Kubernetes Service. No final do curso, você alcançará os seguintes objetivos:
+* Entender os principais conceitos de Kubernetes
+* Construir uma imagem Docker e fazer o deploy de uma aplicação na IBM Cloud Kubernetes Service 
+* Controlar deployments de aplicações, enquato minimiza seu tempo com gerenciamento de infraestrutura
+* Adicionar serviços de IA para ampliar sua aplicação 
+* Proteger e monitorar seu cluster e sua aplicação
 
-# Prerequisites 
+# Pré-requisitos 
 * A Pay-As-You-Go or Subscription [IBM Cloud account](https://console.bluemix.net/registration/)
 
 # Virtual machines
