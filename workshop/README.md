@@ -74,31 +74,31 @@ Vamos discutir sobre orquestração Kubernetes para containers antes de construi
 Agora que nós sabemos o que são containers, vamos definir o que é o Kubernetes. Kubernetes é um orquestrador de containers para provisionar, gerenciar e escalar aplicações. Em outras palavras, Kubernetes permite que você gerencie o ciclo de vida de aplicações conteinerizadas dentro de um cluster de nodes (que é uma coleção de máquina workers, por exemplo, VMs, máquinas físicas etc.).
 
 
-Your applications may need many other resources to run such as Volumes, Networks,  and Secrets that will help you to do things such as connect to databases, talk to firewalled backends, and secure keys. Kubernetes helps you add these resources into your application. Infrastructure resources needed by applications are managed declaratively.
+Sua aplicação pode precisar de outros recursos como volumes, redes e secrets que vão te ajudar a fazer coisas como conexão com banco de dados, conversar com backend com firewall e secure keys. Kubernetes ajuda você a adicionar esses recursos na sua aplicação. Recursos de infraestrutura necessários da aplicação são gerenciados delcarativamente.
 
-**Fast fact:** Other orchestration technologies are Mesos and Swarm.  
+**Observação:** Mesos e Swarm são outras tecnologias de orquestração.  
 
-The key paradigm of kubernetes is it’s Declarative model. The user provides the "desired state" and Kubernetes will do it's best make it happen. If you need 5 instances, you do not start 5 separate instances on your own but rather tell Kubernetes that you need 5 instances and Kubernetes will reconcile the state automatically. Simply at this point you need to know that you declare the state you want and Kubernetes makes that happen. If something goes wrong with one of your instances and it crashes, Kubernetes still knows the desired state and creates a new instances on an available node.
+O paradigma chave é o modo declarativo. O usuário fornece o estado desejado enquanto o Kubenetes fará tudo possível para atender. Se você precisar de 5 instâncias, você não inicia 5 instâncias separadas por conta própria mas diz para o kubernetes que você precisa de 5 instâncias e o kubernetes vai atender esse estado automaticamente. Simplesmente nesse momento você precisa saber que você declara o estado que você quer e o Kubernetes fará isso acontecer. Se alguma coisa der errado com uma das instâncias e a instância cair, Kubernetes ainda saberá o estado desejado e criará novas instâncias no node disponível.
 
-**Fun to know:** Kubernetes goes by many names. Sometimes it is shortened to _k8s_ (losing the internal 8 letters), or _kube_. The word is rooted in ancient Greek and means "Helmsman". A helmsman is the person who steers a ship. We hope you can seen the analogy between directing a ship and the decisions made to orchestrate containers on a cluster.
+**Fun fact** Kubernetes pode ser chamado por muitos nomes. As vezes é encurtado como _k8s_ (perdendo 8 letras), ou carinhosamente chamado de _kube_. A palavra vem na Grécia antiga que significa "Helmsman" (timoneiro). O helmsman é a pessoa responsável por dirigir o barco. Esperamos que você tenha percebido a analogia entra dirigir um barco e as decisões feitas para orquestrar um container em um cluster.
 
-# How was Kubernetes created?
+# Como o Kubernetes foi criado?
 
 Google wanted to open source their knowledge of creating and running the internal tools Borg & Omega. It adopted Open Governance for Kubernetes by starting the Cloud Native Computing Foundation (CNCF) and giving Kubernetes to that foundation, therefore making it less influenced by Google directly. Many companies such as RedHat, Microsoft, IBM and Amazon quickly joined the foundation.
 
 Main entry point for the kubernetes project is at [http://kubernetes.io](http://kubernetes.io) and the source code can be found at [https://github.com/kubernetes](https://github.com/kubernetes).
 
-# Kubernetes architecture
+# Arquitetura do Kubenetes
 
-At its core, Kubernetes is a data store (etcd). The declarative model is stored in the data store as objects, that means when you say I want 5 instances of a container then that request is stored into the data store. This information change is watched and delegated to Controllers to take action. Controllers then react to the model and attempt to take action to achieve the desired state. The power of Kubernetes is in its simplistic model.
+Em sua essência, Kubernetes é um data store (etcd). O modo declarativo é armazenado dentro do data store como objeto, que significa que quando você diz que quer 5 instâncias de um container, aquele request é armazenado no data store. Essa mudança de informação é vigiada e delegada para os controllers que tomam a ação. Os Controllers reagem então ao modelo e tentam tomar uma ação para atingir ao estado desejado. O poder do Kubernetes está no modelo simplista.
 
-As shown, API server is a simple HTTP server handling create/read/update/delete(CRUD) operations on the data store. Then the controller picks up the change you wanted and makes that happen. Controllers are responsible for instantiating the actual resource represented by any Kubernetes resource. These actual resources are what your application needs to allow it to run successfully.
+Como monstrado, API server é um simples manipulador de HTTP server que realiza operações como criação/leitura/atualização/exlusão(CRUD) no data store. Então o controller pega a mudança que você deseja e realiza aquela mudança. Controllers são responsáveis por instanciar os recursos atuais representados por qualquer recurso do Kubernetes. Esses recursos atuais são o que a sua aplicação precisa para permitir que execute perfeitamente.
 
 ![architecture diagram](images/kubernetes_arch.png)
 
-# Kubernetes resource model
+# Modelo de recursos do Kubernetes
 
-Kubernetes Infrastructure defines a resource for every purpose. Each resource is monitored and processed by a controller. When you define your application, it contains a collection of these resources. This collection will then be read by Controllers to build your applications actual backing instances. Some of resources that you may work with are listed below for your reference, for a full list you should go to [https://kubernetes.io/docs/concepts/](https://kubernetes.io/docs/concepts/). In this class we will only use a few of them, like Pod, Deployment, etc.
+A infraestrutura do kubernetes define um recurso para cada  defines a resource for every propósito. Cada recurso é monitorado e processado pelo controller. Quando você define sua aplicação, ela contem uma coleção desses recursos. Esta coleção poderá então ser lida pelos controlles para construir suas aplicações build your applications actual backing instances. Some of resources that you may work with are listed below for your reference, for a full list you should go to [https://kubernetes.io/docs/concepts/](https://kubernetes.io/docs/concepts/). In this class we will only use a few of them, like Pod, Deployment, etc.
 
 * Config Maps holds configuration data for pods to consume.
 * Daemon Sets ensure that each node in the cluster runs this Pod
@@ -123,18 +123,18 @@ Kubernetes Infrastructure defines a resource for every purpose. Each resource is
 
 Kubernetes does not have the concept of an application. It has simple building blocks that you are required to compose. Kubernetes is a cloud native platform where the internal resource model is the same as the end user resource model.
 
-# Key resources
+# Recursos Chave
 
-A Pod is the smallest object model that you can create and run. You can add labels to a pod to identify a subset to run operations on. When you are ready to scale your application you can use the label to tell Kubernetes which Pod you need to scale. A Pod typically represent a process in your cluster. Pods contain at least one container that runs the job and additionally may have other containers in it called sidecars for monitoring, logging, etc. Essentially a Pod is a group of containers.
+Um Pod é o menos modelo objeto que você pode criar e rodar. Você pode adicionar labels aos pods para identificar uma subseção para rodar operações. Quando você está pronto para escalar sua aplicação, você pode usar a label para dizer para o kubernetes qual pod você precisa escalar. Um pod representa um processo no seu cluster. Pods contem pelo menos um container que roda o trabalho e adicionalmente pode ter outros container chamados sidecars para monitoração, logs, etc. Essencialmente, um pod é um grupo de containers.
 
-When we talk about a application, we usually refer to group of Pods. Although an entire application can be run in a single Pod, we usually build multiple Pods that talk to each other to make a useful application. We will see why separating the application logic and backend database into separate Pods will scale better when we build an application shortly.
+Quando nós falamos sobre uma aplicação, nós geralmente nos referiamos a um grupo de pods. Apesar de uma aplicação poder rodar em um único pod, nós geralmente construímos vários pods para conversarem uns com os outros para fazer uma aplicação útil. Nós vamos ver porque separar a aplicação logica e o backend database em pods separados que irão escalar melhor quando construímos uma aplicação breve.
 
-Services define how to expose your app as a DNS entry to have a stable reference. We use query based selector to choose which pods are supplying that service.
+Services definem como expor sua aplicação como uma entrada DNS para ter uma referência estável. Nós usamos seletor baseado em query para escolher qual pod fornecer esse serviço.
 
-The user directly manipulates resources via yaml:
+O usuário manipula diretamente os recursos via yaml:
 `$ kubectl (create|get|apply|delete) -f myResource.yaml`
 
-Kubernetes provides us with a client interface through ‘kubectl’. Kubectl commands allow you to manage your applications, manage cluster and cluster resources, by modifying the model in the data store.
+Kubernetes nos fornece com umas client interface através do ‘kubectl’. O comando kubectl te permite gerenciar suas aplicações, gerenciar seu cluster e os recursos do cluster, modificando o modelo dentro do data store.
 
 # Kubernetes application deployment workflow
 
