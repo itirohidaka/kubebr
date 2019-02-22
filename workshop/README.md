@@ -28,11 +28,11 @@ Antes dos containers, a maior parte da infraestrutura não rodava em bare metal,
 
 # Containers
 
-Containers fornecem um isolamento parecido com as VMs, exceto pelo SO e o nível do processo. Cada container é um processo ou grupo de processos que rodam isolados. Containers típicos rodam apenas um unico Typical containers explicitly run only a single process, as they have no need for the standard system services. What they usually need to do can be provided by system calls to the base OS kernel.
+Containers fornecem um isolamento parecido com as VMs, exceto pelo SO e o nível do processo. Cada container é um processo ou grupo de processos que rodam isolados. Containers típicos rodam apenas um unico processo, por não precisarem dos serviços padrão do sistema. O que eles geralmente precisam fazer pode ser fornecido pelas chamadas do sistema para o kernel do sistema operacional base.
 
-The isolation on linux is provided by a feature called 'namespaces'. Each different kind of isolation (IE user, cgroups) is provided by a different namespace.
+O isolamento no linux é fornecido pela feature chamada 'namespaces'. Cada diferente tipo de isolamento (usuário IE, cgroups) é fornecido por um diferente namepsace.
 
-This is a list of some of the namespaces that are commonly used and visible to the user:
+Essa é uma lista de alguns namespaces que são normalmente usados e visíveis ao usuário:
 
 * PID - process IDs
 * USER - user and group IDs
@@ -43,35 +43,36 @@ This is a list of some of the namespaces that are commonly used and visible to t
 
 # VM vs container
 
-Traditional applications are run on native hardware. A single application does not typically use the full resources of a single machine. We try to run multiple applications on a single machine to avoid wasting resources. We could run multiple copies of the same application, but to provide isolation we use VMs to run multiple application instances (VMs) on the same hardware. These VMs have full operating system stacks which make them relatively large and inefficient due to duplication both at runtime and on disk.
+Aplicações tradicionais rodam em um hardware nativo. Uma única aplicação geralmente não utiliza todos os recursos de uma única máquina.  Nós tentamos rodar múltiplas aplicações em uma única máquina para evitar deixar recursos ociosos. Nós poderíamos rodas várias cópias de uma mesma aplicação, mas para fornecer isolamento nós usamos VMs que rodam várias instâncias (VMs) em um mesmo hardware. Essas VMs possuem pilhas de sistemas operacionais que as tornam relativamente grandes e ineficientes  devido a duplicação tanto do runtime quanto do disco.
 
 ![Containers versus VMs](images/VMvsContainer.png)
 
-Containers allow you to share the host OS. This reduces duplication while still providing the isolation. Containers also allow you to drop unneeded files such as system libraries and binaries to save space and reduce your attack surface. If SSHD or LIBC are not installed, they cannot be exploited.
+Containers permitem que você compartilhe um SO host. Isso reduz as duplicações e ainda fornece o isolamento. Containers também permitem que você compartilhe um SO host. Containers também permitem que você reduza arquivos desnecessários assim como bibliotecas de sistemas e binários para economizar espaço e reduzir a superfície de ataque. Se o SSHD ou a LIBC não estiverem instalados, eles não poderão ser utilizados.
 
-# Get set up
+# Prepare-se
 
-Before we dive into Kubernetes, you need to provision a cluster for your containerized app. Then you won't have to wait for it to be ready for the subsequent labs. 
+Antes de entrarmos em Kubernetes, você precisará provisionar um cluster para você conteinerizar sua aplicação. Então você não terá que esperar ficar pronto para os labs subsequentes. 
 
-1. You must install the CLIs per https://console.ng.bluemix.net/docs/containers/cs_cli_install.html. If you do not yet have these CLIs and the Kubernetes CLI, do [lab 0](Lab0) before starting the course.
-2. If you haven't already, provision a cluster. This can take a few minutes, so let it start first: `ibmcloud cs cluster-create --name <name-of-cluster>`
-3. After creation, before using the cluster, make sure it has completed provisioning and is ready for use. Run `ibmcloud cs clusters` and make sure that your cluster is in state "deployed".  
-4. Then use `ibmcloud cs workers <name-of-cluster>` and make sure that all worker nodes are in state "normal" with Status "Ready".
+1. Você deve instalar as CLIs pelo https://console.ng.bluemix.net/docs/containers/cs_cli_install.html. Se você ainda não possuir essas CLIs e a CLI do Kubernetes, faça o [lab 0](Lab0) antes de iniciar este curso.
+2. Se você ainda não possuir um cluster, provisione. Isso pode levar alguns minutos, então comece: `ibmcloud cs cluster-create --name <name-of-cluster>`
+3. Depois da criação, antes de usar o cluster, certifique-se que o provsionamento esteja completo e pronto para uso. Rode o seguinte comando: `ibmcloud cs clusters` e verifique se o estado do seu cluster consta como "deployed".  
+4. E então rode `ibmcloud cs workers <name-of-cluster>` e verifique se todos os workers nodes estão em state "normal" com os status "Ready".
 
-# Kubernetes and containers: an overview
+# Kubernetes e containers: um overview
 
-Let's talk about Kubernetes orchestration for containers before we build an application on it. We need to understand the following facts about it:
+Vamos discutir sobre orquestração Kubernetes para containers antes de construirmos aplicações nele. Nós precisamos entender os seguintes fatos sobre isso:
 
-* What is Kubernetes, exactly?
-* How was Kubernetes created?
-* Kubernetes architecture
-* Kubernetes resource model
-* Kubernetes at IBM
+* O que extamente é o Kubernetes?
+* Como o Kubernetes foi cirado?
+* Arquitetura do Kubernetes
+* Modelo de recurso do Kubenetes
+* Kubernetes na IBM
 * Let's get started
 
-# What is Kubernetes?
+# O que é Kubernetes?
 
-Now that we know what containers are, let's define what Kubernetes is. Kubernetes is a container orchestrator to provision, manage, and scale applications. In other words, Kubernetes allows you to manage the lifecycle of containerized applications within a cluster of nodes (which are a collection of worker machines, for example, VMs, physical machines etc.).
+Agora que nós sabemos o que são containers, vamos definir o que é o Kubernetes. Kubernetes é um orquestrador de containers para provisionar, gerenciar e escalar aplicações. Em outras palavras, Kubernetes permite que você gerencie o ciclo de vida de aplicações conteinerizadas dentro de um cluster de nodes (que é uma coleção de máquina workers, por exemplo, VMs, máquinas físicas etc.).
+
 
 Your applications may need many other resources to run such as Volumes, Networks,  and Secrets that will help you to do things such as connect to databases, talk to firewalled backends, and secure keys. Kubernetes helps you add these resources into your application. Infrastructure resources needed by applications are managed declaratively.
 
