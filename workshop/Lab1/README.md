@@ -12,8 +12,12 @@ Se você ainda não possuir:
 
 3. Utilize o comando abaixo para verificar o status da criação do cluster:
 
-   ```$ ibmcloud ks clusters```
-
+   ```console
+   $ ibmcloud ks clusters
+   Name        ID                  State       Created        Workers   Location   Version       Resource Group Name
+   itirofree   0a582a8553e33a5f0   requested   1 minute ago   1         hou02      1.11.7_1543   Default
+   mycluster   012271dc5dd23c797   normal      3 days ago     3         Dallas     1.13.2_1507   Default
+   ```
 
 Uma vez o cluster provisionado, a CLI do kubernetes `kubectl` precisa ser configurada para conversar com o cluster provisionado.
 
