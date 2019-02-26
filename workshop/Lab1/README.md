@@ -14,8 +14,8 @@ Se você ainda não possuir:
 
    ```console
    $ ibmcloud ks clusters
-   Name        ID                  State       Created        Workers   Location   Version       Resource Group Name
-   itirofree   0a582a8553e33a5f0   requested   1 minute ago   1         hou02      1.11.7_1543   Default
+   Name        ID                  State       Created        Workers   Location   Version       
+   itirofree   0a582a8553e33a5f0   requested   1 minute ago   1         hou02      1.11.7_1543 
    ```
 
 Uma vez o cluster provisionado, a CLI do kubernetes `kubectl` precisa ser configurada para conversar com o cluster provisionado.
