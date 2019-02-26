@@ -8,7 +8,12 @@ Se você ainda não possuir:
 1. Instale as CLIs da IBM Cloud e faça o login, como descrito no  [Lab 0](../Lab0/README.md).
 2. Provisione um cluster:
 
-   ```$ ibmcloud cs cluster-create --name <name-of-cluster>```
+   ```$ ibmcloud ks cluster-create --name <name-of-cluster>```
+
+3. Utilize o comando abaixo para verificar o status da criação do cluster:
+
+   ```$ ibmcloud ks clusters```
+
 
 Uma vez o cluster provisionado, a CLI do kubernetes `kubectl` precisa ser configurada para conversar com o cluster provisionado.
 
