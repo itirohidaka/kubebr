@@ -34,12 +34,12 @@ O isolamento no linux é fornecido pela feature chamada 'namespaces'. Cada difer
 
 Essa é uma lista de alguns namespaces que são normalmente usados e visíveis ao usuário:
 
-* PID - process IDs
-* USER - user and group IDs
-* UTS - hostname and domain name
+* PID - IDs dos processos
+* USER - IDs de grupos e usuários
+* UTS - hostname e nome de domínio
 * NS - mount points
-* NET - network devices, stacks, and ports
-* CGROUPS - control limits and monitoring of resources
+* NET - dispositivos de rede, stacks e portas
+* CGROUPS - limites de controle e monitoramento de recursos
 
 # VM vs container
 
@@ -98,30 +98,30 @@ Como monstrado, API server é um simples manipulador de HTTP server que realiza 
 
 # Modelo de recursos do Kubernetes
 
-A infraestrutura do kubernetes define um recurso para cada  defines a resource for every propósito. Cada recurso é monitorado e processado pelo controller. Quando você define sua aplicação, ela contem uma coleção desses recursos. Esta coleção poderá então ser lida pelos controlles para construir suas aplicações build your applications actual backing instances. Some of resources that you may work with are listed below for your reference, for a full list you should go to [https://kubernetes.io/docs/concepts/](https://kubernetes.io/docs/concepts/). In this class we will only use a few of them, like Pod, Deployment, etc.
+A infraestrutura do kubernetes define um recurso para cada  defines a resource for every propósito. Cada recurso é monitorado e processado pelo controller. Quando você define sua aplicação, ela contem uma coleção desses recursos. Essa coleção será então lida pelos Controllers para criar as instâncias de suporte do seu aplicativo. Alguns recursos que você pode trabalhar estão listados abaixo para sua referência, para uma lista completa acesse [https://kubernetes.io/docs/concepts/](https://kubernetes.io/docs/concepts/). Nessa aula nós vamos usar alguns deles como Pod, Deployment, etc.
 
 * Config Maps holds configuration data for pods to consume.
-* Daemon Sets ensure that each node in the cluster runs this Pod
-* Deployments defines a desired state of a deployment object
-* Events provides lifecycle events on Pods and other deployment objects
-* Endpoints allows a inbound connections to reach the cluster services
-* Ingress is a collection of rules that allow inbound connections to reach the cluster services
-* Jobs creates one or more pods and as they complete successfully the job is marked as completed.
-* Node is a worker machine in Kubernetes
-* Namespaces are multiple virtual clusters backed by the same physical cluster
-* Pods are the smallest deployable units of computing that can be created and managed in Kubernetes
-* Persistent Volumes provides an API for users and administrators that abstracts details of how storage is provided from how it is consumed
-* Replica Sets ensures that a specified number of pod replicas are running at any given time
-* Secrets are intended to hold sensitive information, such as passwords, OAuth tokens, and ssh keys
-* Service Accounts provides an identity for processes that run in a Pod
-* Services  is an abstraction which defines a logical set of Pods and a policy by which to access them - sometimes called a micro-service.
-* Stateful Sets is the workload API object used to manage stateful applications.   
-* and more...
+* Conjuntos de Daemon asseguram que cada node no cluster execute este Pod
+* Deployments definem um estado desejado de um objeto deployment
+* Events fornecem um ciclo de vida de events em Pods e outros objetos deployment
+* Endpoints permitem conexão de entrada para alcançar os services do cluster
+* Ingress é um conjunto de regras que permite conexões de entraga para alcançar services de um cluster
+* Jobs cria um ou mais pods a medida que completam com sucesso o job, é marcado como completo.
+* Node é uma máquina trabalhadora em Kubernetes
+* Namespaces são vários clusters virtuais apoiados em um mesmo cluster físico
+* Pods são a menor unidade de computing que pode ser criada e gerenciada no Kubernetes
+* Persistent Volumes fornecem uma API para usuários e administradores que abstrai detalhes de como o storage é forncecido e como é consumido
+* Replica Sets garantem que um número específico de replicas de pods estejam rodando a qualquer momento
+* Secrets são projetados para armazenar informações sensíveis, assim como senhas, OAuth tokens e chaves ssh
+* Service Accounts fornecem uma identidade para processos que rodam em um pod
+* Services é uma abstração que definem um conjunto lógico de Pods e uma policy pela qual acessá-los - as vezes chamados de micro-service.
+* Stateful Sets é o objeto API do workload usado para gerenciar aplicações stateful.   
+* e mais...
 
 
 ![Relationship of pods, nodes, and containers](images/container-pod-node-master-relationship.jpg)
 
-Kubernetes does not have the concept of an application. It has simple building blocks that you are required to compose. Kubernetes is a cloud native platform where the internal resource model is the same as the end user resource model.
+Kubernetes não tem o conceito de uma aplicação. Tem blocos de construção simples que você precisa para criar. Kubernetes é uma plataforma nativa de cloud onde o modelo de recurso interno é o mesmo que o modelo de recursos do usuário final..
 
 # Recursos Chave
 
@@ -136,40 +136,39 @@ O usuário manipula diretamente os recursos via yaml:
 
 Kubernetes nos fornece com umas client interface através do ‘kubectl’. O comando kubectl te permite gerenciar suas aplicações, gerenciar seu cluster e os recursos do cluster, modificando o modelo dentro do data store.
 
-# Kubernetes application deployment workflow
+# Workflow do deployment de uma aplicação no Kubernetes
 
 ![deployment workflow](images/app_deploy_workflow.png)
 
-1. User via "kubectl" deploys a new application. Kubectl sends the request to the API Server.
-2. API server receives the request and stores it in the data store (etcd). Once the request is written to data store, the API server is done with the request.
-3. Watchers detects the resource changes and send a notification to controller to act upon it
-4. Controller detects the new app and creates new pods to match the desired number# of instances. Any changes to the stored model will be picked up to create or delete Pods.
-5. Scheduler assigns new pods to a Node based on a criteria. Scheduler makes decisions to run Pods on specific Nodes in the cluster. Scheduler modifies the model with the node information.
-6. Kubelet on a node detects a pod with an assignment to itself, and deploys the requested containers via the container runtime (e.g. Docker). Each Node watches the storage to see what pods it is assigned to run. It takes necessary actions on resource assigned to it like create/delete Pods.
-7. Kubeproxy manages network traffic for the pods – including service discovery and load-balancing. Kubeproxy is responsible for communication between Pods that want to interact.
+1. O usuário faz o deploy de uma nova aplicação através do "kubectl". Kubectl envia o request para o API server.
+2. O API server recebe o request e armazena no data store (etcd). Uma vez com o request armazenado no data store,  o API server encerra o request.
+3. Os Watchers detecta as mudanças de recursos e envia uma notificação ao controller para agir sobre isso
+4. O Controller detecta o novo app e cria novos pods para corresponder o número desejado de instâncias. Qualquer mudança no modelo armazenado, serão selecionadas para criar ou deletar Pods.
+5. O Scheduler atribui novos pods para um Node baseado nos critérios. Scheduler faz as decisões para rodar Pods em Nodes específicos em um cluster. O Scheduler modifica o modelo com a informação do node.
+6. Kubelet em um node detecta um pod com atribuído para ele mesmo, e faz o deploy dos containers requisitados via container runtime (e.g. Docker). Cada node vigia o storage para ver quais pods foram atribuídos para ele rodar. Ele executa ações necessárias no recurso atribuído a ele como criar/deletar pods.
+7. Kubeproxy gerencia o tráfego de rede para os pods – incluindo service discovery e load-balancing. Kubeproxy é responsável pela comunicação entre Pods que querem interagir.
+
+# Informações do Lab
+
+IBM Cloud fornece a capacidade de rodar aplicações em containers no Kubernetes. O IBM Cloud Kubernetes Service roda um cluster Kubernetes que te entrega o seguinte:
+
+* Ferramentas poderosas
+* Experiência intuitiva do usuário
+* Segurança e isolamento construídos para permitir entrega rápida de aplicações seguras
+* Serviços da Cloud incluindo capacidades cognitivas do Watson
+* Capacidade de gerenciar recursos de um cluster dedicado para aplicações stateless e stateful workloads
 
 
-# Lab information
+#  Overview do Lab
 
-IBM Cloud provides the capability to run applications in containers on Kubernetes. The IBM Cloud Container Service runs Kubernetes clusters which deliver the following:
+[Lab 0](Lab0) (Optional): Fornece uma apresentação de como instalar as ferramentas da IBM Cloud command-line e a CLI do Kubernetes. Você pode pular esse lab se você já tiver instalado a CLI IBM CLoud, plugin do kubernetes service, plugin do container registry e a CLI do Kubernetes.
 
-* Powerful tools
-* Intuitive user experience
-* Built-in security and isolation to enable rapid delivery of secure applications
-* Cloud services including cognitive capabilities from Watson
-* Capability to manage dedicated cluster resources for both stateless applications and stateful workloads
+[Lab 1](Lab1): Esse lab percorre a criação e o deploy de um simples app "guestbook" escrito em Go como um net/http server e como acessá-lo.
 
+[Lab 2](Lab2): Feito a partir do lab 1 para expandir para um setup mais resiliente que pode sobreviver à containers com falha e recover. Lab 2 também percorre serviços básicos que você precisa para começar com Kubernetes e o IBM Cloud Kubernetes Service (IKS)
 
-#  Lab overview
+[Lab 3](Lab3): Feito a partir do lab 2 para aumentar as capacidades da aplicação Guestbook, já com o deploy feito. Esse lab cobre o design básico de aplicativos distrubuídos e como o Kubernetes te ajuda a usar práticas padrões de design.
 
-[Lab 0](Lab0) (Optional): Provides a walkthrough for installing IBM Cloud command-line tools and the Kubernetes CLI. You can skip this lab if you have the IBM Cloud CLI, the container-service plugin, the containers-registry plugin, and the kubectl CLI already installed on your machine.
+[Lab 4](Lab4): Como permitir que sua aplicação e o Kubernetes possam automaticamente monitorar e recuperar a aplicação sem intervenção do usuário.
 
-[Lab 1](Lab1): This lab walks through creating and deploying a simple "guestbook" app written in Go as a net/http Server and accessing it.
-
-[Lab 2](Lab2): Builds on lab 1 to expand to a more resilient setup which can survive having containers fail and recover. Lab 2 will also walk through basic services you need to get started with Kubernetes and the IBM Cloud Container Service
-
-[Lab 3](Lab3): Builds on lab 2 by increasing the capabilities of the deployed Guestbook application. This lab covers basic distributed application design and how kubernetes helps you use standard design practices.
-
-[Lab 4](Lab4): How to enable your application so Kubernetes can automatically monitor and recover your applications with no user intervention.
-
-[Lab D](LabD): Debugging tips and tricks to help you along your Kubernetes journey. This lab is useful reference that does not follow in a specific sequence of the other labs. 
+[Lab D](LabD): Dicas de Debugging e truques para te ajudar em sua jornada de Kubernetes. Esse lab é uma referência útil que não segue uma sequência específica dos outros Labs. 
