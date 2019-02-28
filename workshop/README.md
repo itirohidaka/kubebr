@@ -6,7 +6,7 @@
 
 Ei, você está procurando um curso 101 sobre containers? Confira nosso [Docker Essentials](https://developer.ibm.com/courses/all/docker-essentials-extend-your-apps-with-containers/).
 
-Containers permitem que você rode aplicações isoladas com segurança e cotas nos recursos do sistema. Containers começaram como uma ferramenta individual entregue com kernel linux. Docker foi lançado tornando containers fácil de se usar e os desenvolvedores rapidamente aderiram essa ideia. Containers também despertaram interesses em arquiteturas de microsserviços, uma metodologia para desenvolvimento de aplicações aonde aplicações complexas são divididas em partes essas partes trabalham juntas.
+Containers permitem que você rode aplicações isoladas com segurança e cotas nos recursos do sistema. Containers começaram como uma ferramenta individual entregue com kernel linux. Docker foi lançado tornando containers fácil de se usar e os desenvolvedores rapidamente aderiram essa ideia. Containers também despertaram interesses em arquiteturas de microsserviços, uma metodologia para desenvolvimento de aplicações aonde aplicações complexas são divididas em partes e essas partes trabalham juntas.
 
 Assista esse [video](https://www.youtube.com/watch?v=wlBhtc31I8c) para saber mais sobre usos de containers em produção.
 
@@ -30,7 +30,7 @@ Antes dos containers, a maior parte da infraestrutura não rodava em bare metal,
 
 Containers fornecem um isolamento parecido com as VMs, exceto pelo SO e o nível do processo. Cada container é um processo ou grupo de processos que rodam isolados. Containers típicos rodam apenas um unico processo, por não precisarem dos serviços padrão do sistema. O que eles geralmente precisam fazer pode ser fornecido pelas chamadas do sistema para o kernel do sistema operacional base.
 
-O isolamento no linux é fornecido pela feature chamada 'namespaces'. Cada diferente tipo de isolamento (usuário IE, cgroups) é fornecido por um diferente namepsace.
+O isolamento no linux é fornecido pela feature chamada 'namespaces'. Cada diferente tipo de isolamento (usuário IE, cgroups) é fornecido por um diferente namespace.
 
 Essa é uma lista de alguns namespaces que são normalmente usados e visíveis ao usuário:
 
@@ -58,7 +58,7 @@ Antes de entrarmos em Kubernetes, você precisará provisionar um cluster para v
 3. Depois da criação, antes de usar o cluster, certifique-se que o provsionamento esteja completo e pronto para uso. Rode o seguinte comando: `ibmcloud cs clusters` e verifique se o estado do seu cluster consta como "deployed".  
 4. E então rode `ibmcloud cs workers <name-of-cluster>` e verifique se todos os workers nodes estão em state "normal" com os status "Ready".
 
-# Kubernetes e containers: um overview
+# Kubernetes e containers: Overview
 
 Vamos discutir sobre orquestração Kubernetes para containers antes de construirmos aplicações nele. Nós precisamos entender os seguintes fatos sobre isso:
 
@@ -74,7 +74,7 @@ Vamos discutir sobre orquestração Kubernetes para containers antes de construi
 Agora que nós sabemos o que são containers, vamos definir o que é o Kubernetes. Kubernetes é um orquestrador de containers para provisionar, gerenciar e escalar aplicações. Em outras palavras, Kubernetes permite que você gerencie o ciclo de vida de aplicações conteinerizadas dentro de um cluster de nodes (que é uma coleção de máquina workers, por exemplo, VMs, máquinas físicas etc.).
 
 
-Sua aplicação pode precisar de outros recursos como volumes, redes e secrets que vão te ajudar a fazer coisas como conexão com banco de dados, conversar com backend com firewall e secure keys. Kubernetes ajuda você a adicionar esses recursos na sua aplicação. Recursos de infraestrutura necessários da aplicação são gerenciados delcarativamente.
+Sua aplicação pode precisar de outros recursos como volumes, redes e secrets que vão te ajudar a fazer coisas como conexão com banco de dados, conversar com backend com firewall e chaves de segurança. Kubernetes ajuda você a adicionar esses recursos na sua aplicação. Recursos de infraestrutura necessários da aplicação são gerenciados delcarativamente.
 
 **Observação:** Mesos e Swarm são outras tecnologias de orquestração.  
 
@@ -84,9 +84,8 @@ O paradigma chave é o modo declarativo. O usuário fornece o estado desejado en
 
 # Como o Kubernetes foi criado?
 
-Google wanted to open source their knowledge of creating and running the internal tools Borg & Omega. It adopted Open Governance for Kubernetes by starting the Cloud Native Computing Foundation (CNCF) and giving Kubernetes to that foundation, therefore making it less influenced by Google directly. Many companies such as RedHat, Microsoft, IBM and Amazon quickly joined the foundation.
-
-Main entry point for the kubernetes project is at [http://kubernetes.io](http://kubernetes.io) and the source code can be found at [https://github.com/kubernetes](https://github.com/kubernetes).
+Google queria abrir ao público seu conhecimento de criação e execução da ferramenta interna Borg & Omega. Ela adotou Open Governance para Kubernetes fundando a Cloud Native Computing Foundation (CNCF) e doando o Kubernetes para essa fundação, assim tornando Kubernetes menos influente pelo Google. Muitas companias como a RedHat, Microsoft, IBM e Amazon se juntaram rapidamente a fundação.
+Ponto de entrada principal para o projeto Kubernetes está em [http://kubernetes.io](http://kubernetes.io) e o código fonte pode ser encontrado em [https://github.com/kubernetes](https://github.com/kubernetes).
 
 # Arquitetura do Kubenetes
 
