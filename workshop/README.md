@@ -6,7 +6,7 @@
 
 Ei, você está procurando um curso 101 sobre containers? Confira nosso [Docker Essentials](https://developer.ibm.com/courses/all/docker-essentials-extend-your-apps-with-containers/).
 
-Containers permitem que você rode aplicações isoladas com segurança with quotas on system resources. Containers começaram como uma ferramenta individual entregue com kernel linux. Docker foi lançado tornando containers fácil de se usar e os desenvolvedores rapidamente aderiram essa ideia. Containers também despertaram interesses em arquiteturas de microsserviços, uma metodologia para desenvolvimento de aplicações aonde aplicações complexas são divididas em partes essas partes trabalham juntas.
+Containers permitem que você rode aplicações isoladas com segurança e cotas nos recursos do sistema. Containers começaram como uma ferramenta individual entregue com kernel linux. Docker foi lançado tornando containers fácil de se usar e os desenvolvedores rapidamente aderiram essa ideia. Containers também despertaram interesses em arquiteturas de microsserviços, uma metodologia para desenvolvimento de aplicações aonde aplicações complexas são divididas em partes essas partes trabalham juntas.
 
 Assista esse [video](https://www.youtube.com/watch?v=wlBhtc31I8c) para saber mais sobre usos de containers em produção.
 
