@@ -4,9 +4,9 @@
 
 Esse repositório contêm um material introdutório para Kubernetes.
 
-There is a presenter-run [meetup], including [automated scripts] for running a demonstration of Kubernetes as provided by IBM Cloud Kubernetes Service. This should take from 45 minutes to an hour and a half based on the style of the presenter as well as audience participation.
+Isso é uma apresentação [meetup], incluindo [scripts automatizados] para rodar uma desmonstração de Kubernetes fornecida pela IBM Cloud Kubernetes Service. Deve levar cerca de 45 minutos a 1 hora e meia baseado no esquema do apresentador e nos participantes.
 
-There is a self-guided or host-guided [workshop], with detailed explanations about the principles of operating an application in a Kubernetes environment. Including some time for setup, this should take between 2-4 hours. 
+Existe um self-guided ou host-guided [workshop], explicações detalhadas sobre os princípios sobre operar uma aplicação em um ambiente Kubernetes. Incluindo um certo tempo para realizar o setup, levará cerca de 2-4 horas. 
 
 [meetup]: ./presentation/meetup.pptx
 [automated scripts]: ./presentation/scripts
