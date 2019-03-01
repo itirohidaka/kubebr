@@ -58,5 +58,5 @@ O repositório `guestbook` contém a aplicação que iremos implementar, e iremo
 O repositório `kube101` contém as instruções passo a passo para rodar o workshop.
 ```console
 $ git clone https://github.com/IBM/guestbook.git
-$ git clone https://github.com/IBM/kube101.git
+$ git clone https://github.com/itirohidaka/kube101.git
 ```
