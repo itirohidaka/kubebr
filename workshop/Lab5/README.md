@@ -13,9 +13,7 @@ $ git clone https://github.com/IBM/guestbook.git
 
 # 1. Crie sua toolchain
 
-O Kubernetes pode fazer o deploy em um pod individual para rodar a aplicação 
-mas quando você precisa escalar para lidar com uma grande quantidade de requests o  `Deployment` é o
-que você vai utilizar.
+Uma toolchain é um grupo de ferramentas integradas para desenvolvimento, monitoração e mais. Você pode criar sua toolchain do zero ou se basear em um template.
 
 Um deployment gerencia uma coleção de pods semelhantes. Quando você definir um número específico de replicas, 
 o Kubernetes Deployment Controller vai manter esse número de replicas o tempo todo. 
