@@ -85,4 +85,4 @@ Nesse exemplo, definimos uma liveness probe HTTP para checar a saúde do contain
 
    ```kubectl delete -f healthcheck.yml```
 
-6.	Quando você terminar de explorer o dashboard do, na sua CLI, pression `CTRL+C` para sair do comando  `proxy`.
+6.	Quando você terminar de explorar o dashboard do Kubernetes, na sua CLI, pressione `CTRL+C` para sair do comando  `proxy`.
