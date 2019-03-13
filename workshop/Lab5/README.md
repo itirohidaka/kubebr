@@ -29,4 +29,4 @@ Esse template vem com 3 tools:
 
 # 2. Configurando sua Toolchain
 
-Esse template utiliza o repositório GitLab da IBM, precisaremos adicionar uma tool de github para fazermos o deploy do guestbook. Delete a tool code do GitLab e selecione `Add a Tool` para adicionar a tool do GitHub, agora precisaremos configurá-la. 
+
