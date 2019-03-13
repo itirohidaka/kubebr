@@ -6,6 +6,16 @@ O Kubernetes usa checagens de disponibilidade (liveness probes) para saber quand
 
 Além disso, o Kubernetes usa readiness checks para saber quando um container está pronto para começar a aceitar tráfego. Um pod é considerado pronto quando todos os seus containers estiverem prontos. Uma utilidade para essa verificação é controlar quais pods são usados como back-end para serviços. Quando um pod não está pronto, ele é removido dos balanceadores de carga.
 
+Existem 3 métodos para identificar se o pod está vivo (liveness probe) ou se ele está pronto (readiness probe):
+- HTTP
+   O probe envia uma requisicão HTTP para o pod e esse pod responde, caso essa resposta esteja entre o range 200-400, ele se encontra em seu estado normal
+   
+- Command
+   Através do yaml file, você executa um comando dentro do container, se o retorno do status for 0, o pod se encontra em seu estado normal
+   
+- TCP
+   A probe estabelesse uma conexão TCP com o pod, se a conexão for realizada, o pod se encontra em seu estado normal
+
 Nesse exemplo, definimos uma liveness probe HTTP para checar a saúde do container a cada 5 segundos. Para os primeiros 10-15 seconds, o  `/healthz` retorna uma resposta `200` e falhará depois. O Kubernetes irá reiniciar o serviço automaticamente.
 
 1. Abra o arquivo  `healthcheck.yml` com um editor de textos. Esse script de configuração combina alguns passos da lição anterior; para criar um deployment e um serviço ao mesmo tempo. Desenvolvedores de aplicação podem usar esses scripts quando são feitas atualizações, ou para diagnosticar problemas, recriando os pods:
