@@ -1,5 +1,3 @@
-# *** EM CONSTRUÇÃO ***
-
 # 1. Verifique a saúde dos apps
 
 O Kubernetes usa checagens de disponibilidade (liveness probes) para saber quando é o momento de reiniciar um container. Por exemplo, as liveness probes podem descobrir um deadlock; onde uma aplicação está rodando, porém está impossibilitada de fazer algum progresso. Reiniciar o container em tal estado pode ajudar a tornar a aplicação mais disponível apesar dos erros.
@@ -8,91 +6,64 @@ Além disso, o Kubernetes usa readiness checks para saber quando um container es
 
 Existem 3 métodos para identificar se o pod está vivo (liveness probe) ou se ele está pronto (readiness probe):
 - HTTP
-   O probe envia uma requisicão HTTP para o pod e esse pod responde, caso essa resposta esteja entre o range 200-400, ele se encontra em seu estado normal
+
+	O probe envia uma requisicão HTTP para o pod e esse pod responde, caso essa resposta esteja entre o range 200-400, ele se encontra em seu estado normal
    
 - Command
+
    Através do yaml file, você executa um comando dentro do container, se o retorno do status for 0, o pod se encontra em seu estado normal
    
 - TCP
+
    A probe estabelesse uma conexão TCP com o pod, se a conexão for realizada, o pod se encontra em seu estado normal
 
-Nesse exemplo, definimos uma liveness probe HTTP para checar a saúde do container a cada 5 segundos. Para os primeiros 10-15 seconds, o  `/healthz` retorna uma resposta `200` e falhará depois. O Kubernetes irá reiniciar o serviço automaticamente.
+Nesse exemplo, definimos uma liveness probe Command para checar a saúde do container.
 
-1. Abra o arquivo  `healthcheck.yml` com um editor de textos. Esse script de configuração combina alguns passos da lição anterior; para criar um deployment e um serviço ao mesmo tempo. Desenvolvedores de aplicação podem usar esses scripts quando são feitas atualizações, ou para diagnosticar problemas, recriando os pods:
+ Abra o arquivo  `healthcheck.yml` com um editor de textos. Esse script de configuração cria um pod, que cria um arquivo chamado `healthy`, aguarda 30 segundos, deleta esse arquivo e aguardar mais 600 segundos.
 
-   1. Atualize os detalhes para a imagem no seu private registry namespace:
-
+  Veja:
+  
       ```
-      image: "ibmcom/guestbook:v2"
-      ```
-
-   2. Observe o liveness probe HTTP que verifica a saúde do container a cada 5 segundos.
-      ```
-      livenessProbe:
-                  httpGet:
-                    path: /healthz
-                    port: 3000
+      apiVersion: v1
+	  kind: Pod
+	  metadata:
+	  		labels:
+			test: liveness
+			name: liveness-exec
+	  spec:
+	  	containers:
+		- name: liveness
+		  image: k8.gcr.io/busybox
+		  args:
+		  - /bin/sh
+		  - -C
+		  - touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600
+		  liveness-probe:
+		  			exec:
+						command:
+						- cat
+						- /tmp/healthy
                   initialDelaySeconds: 5
                   periodSeconds: 5
       ```
 
-   3. Na seção **Service**, observe o  `NodePort`. Ao invés de gerar um nodeport aleatório, como você fez na lição anterior, você pode especificar uma porta no intervalo 30000 – 32767. Este exemplo usa 30072.
 
-2.	Rode o script de configuração no cluster. Quando o deployment e o serviço estiverem criados, a aplicação estará disponível para que todos vejam:
+Então o liveness probe irá executar um cat no arquivo criado nesse yaml. Nos primeiros 30 segundos, toda vez que a probe for executada ela retornará que aquele pod está vivo, após esses 30 segundos quando arquivo é apagado, o probe irá entender que aquele pod possui uma falha e vai reiniciá-lo.
+
+Executando:
 
    ```
-   kubectl apply -f healthcheck.yml
+   kubectl create -f healthcheck.yml
    ```
    
-   Agora que todo o trabalho no deployment está pronto, verifique como tudo acabou. Você pode notar que por haver mais instâncias rodando, as coisas podem ocorrer um pouco mais devagar.
+   Após 30 segundos, vamos verificar se o pod foi reiniciado:
 
-3.	Abra um navegador e observe o app. Para formar a URL, combine o IP com o NodePort especificado no script de configuração. Para conseguir um IP público para o worker node:
+
 
    ```
-   ibmcloud cs workers <cluster-name>
+   kubectl get pods
    ```
 
 
-   Nos primeiros 10 - 15 segundos, uma mensagem “200” será retornada, e então saberá que a aplicação está rodando sem problemas. Após esses 15 segundos, uma mensagem de timeout será exibida.
+   Você pode checar na coluna de Restarts, que aquele pod possui um restart.
 
-4. Inicie o seu dashboard Kubernetes:
-
-   1. Obtenha suas credenciais para o Kubernetes.
-      
-      ```
-      kubectl config view -o jsonpath='{.users[0].user.auth-provider.config.id-token}'
-      ```
-
-   2. Copie o **id-token** exibido.    
-   
-   3. Defina o proxy com o número padrão de porta.
-
-      ```
-      kubectl proxy
-      ```
-
-      Saída:
-
-      ```
-      Starting to serve on 127.0.0.1:8001
-      ```
-   
-   4. Entre no dashboard.
-      
-      1. Abra a seguinte URL em um navegador.
-         
-         ```
-         http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
-         ```
-      
-      2. Na página de entrada, selecione o método de autenticação **Token**.
- 
-      3. Então, cole o **id-token** que você copious anteriormente no campo **Token** e clique em **SIGN IN**.
-  
-   Na aba **Workloads** , você pode ver os recursos que criou. A partir desta aba, você pode atualizar contínuas vezes e ver que a verificação da saúde do ambiente está funcionando. Na seção **Pods** você pode ver quantas vezes os pods são reiniciados quando os containers dentro deles são recriados. É possível que erros apareçam no dashboard, indicando que a verificação encontrou algum problema. Espere alguns minutos antes de dar um novo refresh na página. Você verá o número de reinicializações e mudanças em cada pod.
-
-5. 	Preparado para apagar o que você criou antes de continuar? Desta vez, você pode usar o mesmo script de configuração para excluir ambos os recursos que você criou.
-
-   ```kubectl delete -f healthcheck.yml```
-
-6.	Quando você terminar de explorar o dashboard do Kubernetes, na sua CLI, pressione `CTRL+C` para sair do comando  `proxy`.
