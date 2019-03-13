@@ -17,16 +17,15 @@ Uma toolchain é um grupo de ferramentas integradas para desenvolvimento, monito
 Faça login em [cloud.ibm.com](https://cloud.ibm.com), acesse a sessão de DevOps do portal. Iremos criar nossa toolchain baseada no template para deploy em Kubernetes. Preencha os campos e crie sua toolchain.
 
 Esse template vem com 3 tools:
-```
-Git Repos
-````
-Para pegar a aplicações do repositório Git
+
+`Git Repos`
+- Para pegar a aplicações do repositório Git
 
 `Eclipse Orion Web IDE`
-Com esssa tool você é capaz editar sua aplicação a partir do portal
+- Com esssa tool você é capaz editar sua aplicação a partir do portal
 
 `Delivery Pipeline`
-Esteira de deploy com 3 stages, Build, Validate e Deploy.
+- Esteira de deploy com 3 stages, Build, Validate e Deploy.
 
 # 2. Configurando sua Toolchain
 
