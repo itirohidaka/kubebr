@@ -65,5 +65,5 @@ Executando:
    ```
 
 
-   Você pode checar na coluna de Restarts, que aquele pod possui um restart.
+   Você pode checar na coluna de Restarts, que aquele pod possui um restart, e provavelmente está rodando novamente.
 
