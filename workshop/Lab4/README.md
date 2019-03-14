@@ -11,7 +11,7 @@ Existem 3 métodos para identificar se o pod está vivo (liveness probe) ou se e
    
 - Command
 
-   Através do yaml file, você executa um comando dentro do container, se o retorno do status for 0, o pod se encontra em seu estado normal
+   Você executa um comando dentro do container, se o retorno do status for 0, o pod se encontra em seu estado normal
    
 - TCP
 
