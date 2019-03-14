@@ -170,6 +170,6 @@ IBM Cloud fornece a capacidade de rodar aplicações em containers no Kubernetes
 
 [Lab 4](Lab4): Como permitir que sua aplicação e o Kubernetes possam automaticamente monitorar e recuperar a aplicação sem intervenção do usuário.
 
-[Lab DevOps](LabD): Nesse lab você verá como é fácil fazer o deploy de uma aplicação em Kubernetes utilizando a delivery pipeline da IBM.
+[Lab DevOps](LabDevOps): Nesse lab você verá como é fácil fazer o deploy de uma aplicação em Kubernetes utilizando a delivery pipeline da IBM.
 
 [Lab D](LabD): Dicas de Debugging e truques para te ajudar em sua jornada de Kubernetes. Esse lab é uma referência útil que não segue uma sequência específica dos outros Labs. 
