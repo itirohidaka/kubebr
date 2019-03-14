@@ -27,9 +27,9 @@ Nesse exemplo, definimos uma liveness probe Command para checar a saúde do cont
       apiVersion: v1
 	  kind: Pod
 	  metadata:
-	  	labels:
-		test: liveness
-		name: liveness-exec
+	  		labels:
+			test: liveness
+			name: liveness-exec
 	  spec:
 	  	containers:
 		- name: liveness
@@ -39,10 +39,10 @@ Nesse exemplo, definimos uma liveness probe Command para checar a saúde do cont
 		  - -C
 		  - touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600
 		  liveness-probe:
-		  	exec:
-			command:
-			- cat
-			- /tmp/healthy
+		  			exec:
+						command:
+						- cat
+						- /tmp/healthy
                   initialDelaySeconds: 5
                   periodSeconds: 5
       ```
