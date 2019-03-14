@@ -29,6 +29,10 @@ Esse template vem com 3 tools:
 `Delivery Pipeline`
 - Esteira de deploy com 3 stages, Build, Validate e Deploy.
 
-Você pode iniciar sua delivery pipeline de duas maneiras, ativando manualmente ou atualizando seu repositório.
+Assim que sua toolchain estiver pronta, ela iniciará automaticamente fazendo o deploy da sua aplicação `hello-container`. Posteriormente você pode iniciar sua delivery pipeline de duas maneiras, ativando manualmente ou atualizando seu repositório.
+
+Para verificar os stages, clique na tool `Delivery Pipeline` e cheque se todos os estágios foram executados com sucesso. No ultimo stage (Prod), na área de jobs é possível visualizar os logs de execução. No fim do log de deploy, você encontrará o link com IP do seu worker node e a porta para acessar sua aplicação.
+
+Pronto, deploy feito!
 
 
