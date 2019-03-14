@@ -3,18 +3,20 @@
 
 Nesse lab, você aprenderá como fazer o deploy de uma aplicação utilizando a IBM Toolchain. 
 
-Clone o repositório:
+# Pré Requisitos
+Esse lab utiliza os seguintes serviços:
 
-```
-$ git clone https://github.com/IBM/guestbook.git
-```
-
+- IBM Cloud Container Registry
+- Kubernetes Services
+- Continous Delivery
 
 # 1. Criando sua Toolchain
 
 Uma toolchain é um grupo de ferramentas integradas para desenvolvimento, monitoração e mais. Você pode criar sua toolchain do zero ou se basear em um template.
 
 Faça login em [cloud.ibm.com](https://cloud.ibm.com), acesse a sessão de DevOps do portal. Iremos criar nossa toolchain baseada no template para deploy em Kubernetes. Preencha os campos e crie sua toolchain.
+
+Ele irá criar no seu namespace um repositório de uma aplicação básica `hello-container`.
 
 Esse template vem com 3 tools:
 
@@ -27,6 +29,6 @@ Esse template vem com 3 tools:
 `Delivery Pipeline`
 - Esteira de deploy com 3 stages, Build, Validate e Deploy.
 
-# 2. Configurando sua Toolchain
+Você pode iniciar sua delivery pipeline de duas maneiras, ativando manualmente ou atualizando seu repositório.
 
 
