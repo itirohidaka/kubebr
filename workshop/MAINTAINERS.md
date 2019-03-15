@@ -7,7 +7,7 @@ This guide is intended for maintainers — anybody with commit access to one or 
 | Name | GitHub | email |
 |---|---|---|
 | Gerson Itiro Hidaka  | itirohidaka | itiro@br.ibm.com |
-| Vinicius Rocha |  | vinicius.rocha@ibm.com |
+| Vinicius Rocha | vinerocha | vinicius.rocha@ibm.com |
 
 ## Methodoology:
 
