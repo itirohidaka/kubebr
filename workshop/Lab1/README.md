@@ -96,7 +96,7 @@ mas também o recurso chamado Deployment que gerencia o ciclo de vida desses pod
    
 Parabéns, você fez o deploy de uma aplicação no Kubernetes!
 
-Quando você tiver terminado, você pode também usar esse deployment
+Quando você concluir os passos acima, você pode também usar esse deployment
 [próximo lab deste curso](../Lab2/README.md), ou você pode remover o deployment e encerrar o curso por aqui
 
   1. Para remover o deployment, execute `$ kubectl delete deployment guestbook`.
