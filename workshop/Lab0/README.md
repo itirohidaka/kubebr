@@ -63,6 +63,10 @@ Para efetuar o login usando a linha de comando, siga os passos abaixo:
 ibmcloud login
 ```
 
+3. Selecione a conta, ou se tiver uma única conta cadastrada passe para o próximo passo.
+
+4. Selecione a região. Selecione a região "us-south" para que tenha a possibilidade de criar um cluster gratuito.
+
 # Download do Código-fonte
 O repositório `guestbook` contém a aplicação que iremos implementar, e iremos utilizar os arquivos de configuração deste repositório. A aplicação Guestbook tem duas versões; v1 e v2, que iremos utilizar para demonstrar algumas funcionalidades posteriormente. Todos os aquivos de configuração que usamos estão no diretório guestbook/v1.
 
