@@ -20,7 +20,7 @@ Se você ainda não possuir:
 
 Uma vez o cluster provisionado, a CLI do kubernetes `kubectl` precisa ser configurada para conversar com o cluster provisionado.
 
-1. Execute `$ ibmcloud cs cluster-config <name-of-cluster>`, e configure a variável de ambiente `KUBECONFIG`
+1. Execute `$ ibmcloud ks cluster-config <name-of-cluster>`, e configure a variável de ambiente `KUBECONFIG`
    baseado na saída do comando. Isso fará seu client `kubectl` apontar para seu cluster Kubernetes.
 
 Uma vez com seu client configurado, você está pronto para fazer o deploy da sua primeira aplicação, `guestbook`.
