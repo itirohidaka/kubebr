@@ -52,6 +52,17 @@ $echo $PATH
 
 3. Converta o arquivo binário para um arquivo executável:  `chmod +x /usr/local/bin/kubectl`
 
+# Efetuando o Login (Terminal)
+Para efetuar o login usando a linha de comando, siga os passos abaixo:
+
+**Para usuários OS X e Linux:**
+1. Abra o Terminal
+
+2. Para efetuar o login:
+```
+ibmcloud login
+```
+
 # Download do Código-fonte
 O repositório `guestbook` contém a aplicação que iremos implementar, e iremos utilizar os arquivos de configuração deste repositório. A aplicação Guestbook tem duas versões; v1 e v2, que iremos utilizar para demonstrar algumas funcionalidades posteriormente. Todos os aquivos de configuração que usamos estão no diretório guestbook/v1.
 
