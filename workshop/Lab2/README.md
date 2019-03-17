@@ -9,7 +9,7 @@ $ kubectl run guestbook --image=ibmcom/guestbook:v1
 $ kubectl expose deployment guestbook --type="NodePort" --port=3000
 ```
     
-# 1.Escale aplicações utilizando réplicas
+# 1. Escale aplicações utilizando réplicas
 
 Uma *replica* é uma cópia de um pod que contém um serviço rodando. Tendo múltiplas replicas de um pod, você garante que seu deployment terá os recursos disponíveis para aguentar uma carga crescente na sua aplicação.
 
