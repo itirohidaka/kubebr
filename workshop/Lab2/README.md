@@ -156,5 +156,5 @@ Para remover o deployment, utilize `kubectl delete deployment guestbook`.
 
 Para remover o serviço, utilize `kubectl delete service guestbook`.
 
-Parabéns! Você implementou a segunda versão da aplicação. O lab 2 está completo. 
+Parabéns! Você testou neste Lab os conceitos de Escalabilidade, RollOut e RollBack do Kubernetes. O lab 2 está completo. 
 Clique [aqui](../Lab3/README.md) para seguir para o próximo lab.
