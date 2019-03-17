@@ -10,7 +10,7 @@ sobre os recursos que estão sendo criados dentro do seu cluster Kubernetes.
 Antes de trabalharmos com a aplicação, nós precisamos clonar o repositório do github:
 
 ```
-$ git clone https://github.com/IBM/guestbook.git
+$ git clone https://github.com/itirohidaka/guestbook.git
 ```
 
 Esse repositório contém várias versões da aplicação guestbook, 
