@@ -67,4 +67,4 @@ Executando:
 
    Você pode checar na coluna de Restarts, que aquele pod possui um restart, e provavelmente está rodando novamente.
 
-Clique [aqui](../LabD/README.md) para seguir para o próximo lab.
+Clique [aqui](../LabDevOps/README.md) para seguir para o próximo lab.
