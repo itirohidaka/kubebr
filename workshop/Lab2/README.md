@@ -154,4 +154,4 @@ Antes de continuarmos, vamos apagar a aplicação, e então nós Podemos aprende
 Para remover o deployment, utilize `kubectl delete deployment guestbook`.
 
 Para remover o serviço, utilize `kubectl delete service guestbook`.
-Parabéns! Você implementou a segunda versão da aplicação. O lab 2 está completo
+Parabéns! Você implementou a segunda versão da aplicação. O lab 2 está completo. Clique aqui para segui para o próximo lab.
