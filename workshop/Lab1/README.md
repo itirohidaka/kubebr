@@ -83,7 +83,7 @@ mas também o recurso chamado Deployment que gerencia o ciclo de vida desses pod
    Execute o comando `$ ibmcloud ks workers <name-of-cluster>`, e note que o IP público é listado na linha `<public-IP>`.
    
    ```console
-   $ ibmcloud cs workers <name-of-cluster>
+   $ ibmcloud ks workers <name-of-cluster>
    OK
    ID                                                 Public IP        Private IP     Machine Type   State    Status   Zone    Version  
    kube-hou02-pa1e3ee39f549640aebea69a444f51fe55-w1   173.193.99.136   10.76.194.30   free           normal   Ready    hou02   1.5.6_1500*
