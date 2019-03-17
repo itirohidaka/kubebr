@@ -156,4 +156,4 @@ Para remover o deployment, utilize `kubectl delete deployment guestbook`.
 Para remover o serviço, utilize `kubectl delete service guestbook`.
 
 Parabéns! Você implementou a segunda versão da aplicação. O lab 2 está completo. 
-Clique [aqui](../Lab3/README.md) para segui para o próximo lab.
+Clique [aqui](../Lab3/README.md) para seguir para o próximo lab.
