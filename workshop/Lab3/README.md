@@ -401,3 +401,4 @@ $ kubectl delete -f redis-slave-deployment.yaml
 $ kubectl delete -f redis-master-service.yaml 
 $ kubectl delete -f redis-master-deployment.yaml
 ```
+Clique [aqui](../Lab4/README.md) para seguir para o próximo lab.
