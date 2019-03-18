@@ -385,7 +385,7 @@ spec:
 
 - Reinicie o guestbook para que ele encontre o serviço slave para ler.
     ```console
-    $ kubectl delete deploy guestbook
+    $ kubectl delete deploy guestbook-v1
     $ kubectl create -f guestbook-deployment.yaml
     ```
     
