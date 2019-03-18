@@ -40,7 +40,8 @@ Esse template vem com 3 tools:
 6. Clique no botão "Create a Toolchain".
 
 7. Clique na opção "Develop a Kubernetes app".
-![KubernetesSample](../images/KubernetesSample.png)
+
+<img src= "https://github.com/itirohidaka/kubebr/blob/master/workshop/images/KubernetesSample.png" width=30% height=30%>
 
 8. Manter as informações iniciais e clicar em "Delivery Pipeline".
 ![DeliveryPipeline](../images/DeliveryPipeline.png)
