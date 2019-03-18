@@ -7,7 +7,7 @@ Além disso, o Kubernetes usa **readiness probes** para saber quando um containe
 Existem 3 métodos para identificar se o pod está vivo (liveness probe) ou se ele está pronto (readiness probe):
 - **HTTP**
 
-	O probe envia uma requisicão HTTP para o pod e esse pod responde, caso essa resposta esteja entre o range 200-400, ele se encontra em seu estado normal
+	O probe envia uma requisicão HTTP para o pod, caso essa resposta esteja entre o range 200-400, ele se encontra em seu estado normal
    
 - **Command**
 
