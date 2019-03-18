@@ -161,7 +161,7 @@ porta 3000 no cluster para a porta “http-server” do nosso app, que é a port
 
   `$ kubectl describe service guestbook`
   e
-  `$ ibmcloud cs workers <nome-do-cluster>`
+  `$ ibmcloud ks workers <nome-do-cluster>`
 
 # 2. Conecte-se a um serviço back-end.
 
