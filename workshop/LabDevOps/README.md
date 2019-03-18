@@ -16,7 +16,7 @@ Uma toolchain é um grupo de ferramentas integradas para desenvolvimento, monito
 
 1. Faça login em [cloud.ibm.com](https://cloud.ibm.com) com o seu usuário e senha.
 
-2. Acesse o menu Catálogo e procure pelo componente ***"Continuous Delivery"***. Clique em Continuous Delivery.
+2. Acesse o menu Catálogo e procure pelo componente ***Continuous Delivery***. Clique em Continuous Delivery.
 
 Ele irá criar no seu namespace um repositório de uma aplicação básica chamada `hello-container`.
 
