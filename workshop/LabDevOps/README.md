@@ -1,4 +1,4 @@
-# Lab 5: Fazendo deploy de uma aplicação utilizando IBM Continuous Delivery
+# Lab Devops: Fazendo deploy de uma aplicação utilizando IBM Continuous Delivery
 
 
 Nesse lab, você aprenderá como fazer o deploy de uma aplicação utilizando a IBM Continuous Delivery através da criação de uma Toolchain. 
