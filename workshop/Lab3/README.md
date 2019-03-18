@@ -276,7 +276,7 @@ Isso cria um objeto Service chamado 'redis-master' e configura porta de destino
 - Reinicie o guestbook para que ele encontre o serviço redis para usar como banco de dados:
 
     ```console
-    $ kubectl delete deploy guestbook 
+    $ kubectl delete deploy guestbook-v1 
     $ kubectl create -f guestbook-deployment.yaml
     ```
 
