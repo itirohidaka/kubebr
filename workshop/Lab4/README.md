@@ -21,31 +21,30 @@ Nesse exemplo, definimos uma liveness probe Command para checar a saúde do cont
 
  Abra o arquivo  `healthcheck.yml` com um editor de textos. Esse script de configuração cria um pod, que cria um arquivo chamado `healthy`, aguarda 30 segundos, deleta esse arquivo e aguardar mais 600 segundos.
 
-  Veja:
-  
-      ```
-      apiVersion: v1
-	  kind: Pod
-	  metadata:
-	  		labels:
-			test: liveness
-			name: liveness-exec
-	  spec:
-	  	containers:
-		- name: liveness
-		  image: k8.gcr.io/busybox
-		  args:
-		  - /bin/sh
-		  - -C
-		  - touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600
-		  liveness-probe:
-		  			exec:
-						command:
-						- cat
-						- /tmp/healthy
-                  initialDelaySeconds: 5
-                  periodSeconds: 5
-      ```
+Veja:  
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    test: liveness
+  name: liveness-exec
+spec:
+  containers:
+  - name: liveness
+    image: k8s.gcr.io/busybox
+    args:
+    - /bin/sh
+    - -c
+    - touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600
+    livenessProbe:
+      exec:
+       command:
+        - cat
+        - /tmp/healthy
+      initialDelaySeconds: 5
+      periodSeconds: 5
+```
 
 
 Então o liveness probe irá executar um cat no arquivo criado nesse yaml. Nos primeiros 30 segundos, toda vez que a probe for executada ela retornará que aquele pod está vivo, após esses 30 segundos quando arquivo é apagado, o probe irá entender que aquele pod possui uma falha e vai reiniciá-lo.
