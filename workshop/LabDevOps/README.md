@@ -43,6 +43,7 @@ Esse template vem com 3 tools:
 ![KubernetesSample](../images/KubernetesSample.png)
 
 8. Manter as informações iniciais e clicar em "Delivery Pipeline".
+![DeliveryPipeline](../images/DeliveryPipeline.png)
 
 9. Na seção "IBM Cloud API Key", clicar no botão "Create" para criar uma nova API e confirmar a criação da API Key no Pop-up apresentado.
 
@@ -65,6 +66,7 @@ Nesta seção iremos alterar o código da aplicação, comitar a alteração no 
 3. Clique na ToolChain que acabou de criar no exercício anterior.
 
 4. Clique no ícone "Eclipse Orion Web IDE".
+![Toolchain](../images/ToolChain.png)
 
 5. Clicar no arquivo "app.js" e alterar a string na linha abaixo para uma mensagem qualquer:
 ```
