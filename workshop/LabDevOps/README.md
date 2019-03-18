@@ -19,10 +19,13 @@ Uma toolchain é um grupo de ferramentas integradas para desenvolvimento, monito
 2. Acesse o menu Catálogo e procure pelo componente ***Continuous Delivery***. Clique em Continuous Delivery. Ele irá criar no seu namespace um repositório de uma aplicação básica chamada `hello-container`.
 
 Esse template vem com 3 tools:
+
 `Git Repos`
 - Para pegar a aplicações do repositório Git
+
 `Eclipse Orion Web IDE`
 - Com esssa tool você é capaz editar sua aplicação a partir do portal
+
 `Delivery Pipeline`
 - Esteira de deploy com 3 stages, Build, Validate e Deploy.
 
