@@ -31,7 +31,7 @@ Esse template vem com 3 tools:
 `Delivery Pipeline`
 - Esteira de deploy com 3 stages, Build, Validate e Deploy.
 
-3. Selecione a região desejada (Dallas) e clique no botão "Create". Neste momento você será apresentado a um "Getting Started" com informações inicias sobre o Continuous Delivery.
+3. Selecione a região desejada (Dallas) e clique no botão "Create". Neste momento você será apresentado a um "Getting Started" com informações iniciais sobre o Continuous Delivery.
 
 4. Selecione o menu na parte superior esquerda (Hamburger Menu) e Selecione a opção ***Devops***.
 
@@ -40,6 +40,7 @@ Esse template vem com 3 tools:
 6. Clique no botão "Create a Toolchain".
 
 7. Clique na opção "Develop a Kubernetes app".
+![KubernetesSample](../images/KubernetesSample.png)
 
 8. Manter as informações iniciais e clicar em "Delivery Pipeline".
 
