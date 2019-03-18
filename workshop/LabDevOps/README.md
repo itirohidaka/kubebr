@@ -18,7 +18,7 @@ Uma toolchain é um grupo de ferramentas integradas para desenvolvimento, monito
 
 2. Acesse o menu Catálogo e procure pelo componente ***Continuous Delivery***. Clique em Continuous Delivery. Ele irá criar no seu namespace um repositório de uma aplicação básica chamada `hello-container`.
 
-![ContinuousDelivery](images/ContinuousDelivery.png)
+![ContinuousDelivery](../images/ContinuousDelivery.png)
 
 Esse template vem com 3 tools:
 
