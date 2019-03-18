@@ -5,15 +5,15 @@ O Kubernetes usa a verificação de disponibilidade (**liveness probes**) para s
 Além disso, o Kubernetes usa **readiness probes** para saber quando um container está pronto para começar a aceitar tráfego. Um pod é considerado pronto quando todos os seus containers estiverem prontos. Uma utilidade para essa verificação é controlar quais pods são usados como back-end para serviços. Quando um pod não está pronto, ele é removido dos balanceadores de carga.
 
 Existem 3 métodos para identificar se o pod está vivo (liveness probe) ou se ele está pronto (readiness probe):
-- HTTP
+- **HTTP**
 
 	O probe envia uma requisicão HTTP para o pod e esse pod responde, caso essa resposta esteja entre o range 200-400, ele se encontra em seu estado normal
    
-- Command
+- **Command**
 
    Você executa um comando dentro do container, se o retorno do status for 0, o pod se encontra em seu estado normal
    
-- TCP
+- **TCP**
 
    A probe estabelesse uma conexão TCP com o pod, se a conexão for realizada, o pod se encontra em seu estado normal
 
