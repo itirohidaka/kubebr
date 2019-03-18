@@ -66,6 +66,7 @@ Nesta seção iremos alterar o código da aplicação, comitar a alteração no 
 3. Clique na ToolChain que acabou de criar no exercício anterior.
 
 4. Clique no ícone "Eclipse Orion Web IDE".
+
 ![Toolchain](../images/ToolChain.png)
 
 5. Clicar no arquivo "app.js" e alterar a string na linha abaixo para uma mensagem qualquer:
