@@ -1,8 +1,8 @@
 # 1. Verifique a saúde dos apps
 
-O Kubernetes usa a verificação de disponibilidade (liveness probes) para saber quando é o momento de reiniciar um container. Por exemplo, as liveness probes podem descobrir um deadlock; onde uma aplicação está rodando, porém está impossibilitada de fazer algum progresso. Reiniciar o container em tal estado pode ajudar a tornar a aplicação mais disponível apesar dos erros.
+O Kubernetes usa a verificação de disponibilidade (**liveness probes**) para saber quando é o momento de reiniciar um container. Por exemplo, as liveness probes podem descobrir um deadlock; onde uma aplicação está rodando, porém está impossibilitada de fazer algum progresso. Reiniciar o container em tal estado pode ajudar a tornar a aplicação mais disponível apesar dos erros.
 
-Além disso, o Kubernetes usa readiness checks para saber quando um container está pronto para começar a aceitar tráfego. Um pod é considerado pronto quando todos os seus containers estiverem prontos. Uma utilidade para essa verificação é controlar quais pods são usados como back-end para serviços. Quando um pod não está pronto, ele é removido dos balanceadores de carga.
+Além disso, o Kubernetes usa **readiness probes** para saber quando um container está pronto para começar a aceitar tráfego. Um pod é considerado pronto quando todos os seus containers estiverem prontos. Uma utilidade para essa verificação é controlar quais pods são usados como back-end para serviços. Quando um pod não está pronto, ele é removido dos balanceadores de carga.
 
 Existem 3 métodos para identificar se o pod está vivo (liveness probe) ou se ele está pronto (readiness probe):
 - HTTP
