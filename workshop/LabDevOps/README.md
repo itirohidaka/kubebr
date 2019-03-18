@@ -41,9 +41,10 @@ Esse template vem com 3 tools:
 
 7. Clique na opção "Develop a Kubernetes app".
 
-<img src= "https://github.com/itirohidaka/kubebr/blob/master/workshop/images/KubernetesSample.png" width=30% height=30%>
+<img src= "https://github.com/itirohidaka/kubebr/blob/master/workshop/images/KubernetesSample.png" width=50% height=50%>
 
 8. Manter as informações iniciais e clicar em "Delivery Pipeline".
+<img src= "https://github.com/itirohidaka/kubebr/blob/master/workshop/images/KubernetesSample.png" width=50% height=50%>
 ![DeliveryPipeline](../images/DeliveryPipeline.png)
 
 9. Na seção "IBM Cloud API Key", clicar no botão "Create" para criar uma nova API e confirmar a criação da API Key no Pop-up apresentado.
