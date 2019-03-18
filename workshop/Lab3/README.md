@@ -100,7 +100,7 @@ execute o seguinte comando:
  essas alterações, execute o seguinte comando:
 
    ```console
-   $ kubectl edit deployment guestbook
+   $ kubectl edit deployment guestbook-v1
    ```
 
 Isso fará com que ele busque no servidor do Kubernetes a última configuração 
