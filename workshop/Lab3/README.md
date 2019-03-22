@@ -3,7 +3,6 @@
 Nesse lab, você aprenderá como fazer o deploy da mesma aplicação guestbook que fizemos
 no lab anterior, de qualquer maneira, ao invés de usar as funções do `kubectl`
 estaremos fazendo o depoy da aplicação usando arquivos de configuração.
-The configuration file mechanism allows you to have more
 O modo de arquivos de configuração permite que você tenha um controle maior 
 sobre os recursos que estão sendo criados dentro do seu cluster Kubernetes.
 
